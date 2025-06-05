@@ -44,7 +44,7 @@
             <input type="hidden" name="masp" value="' . $item->ma_sach . '">
              <button class="btn btn-link"><i class="fa fa-plus-circle" style="color:#ec4276; font-size:24px;"></i></button></form></td>
             <td>' . number_format($item['gia_khuyen_mai'] * $item['so_luong_sach'], 0, '.', ',')  . ' VNĐ</td>
-            <td><a href="/delCart?masp=' . $item['ma_sach'] . '"><button class="btn btn-danger text-light"><i class="fas fa-trash-alt"></i></button></td></a>
+            <td><a href="delCart?masp=' . $item['ma_sach'] . '"><button class="btn btn-danger text-light"><i class="fas fa-trash-alt"></i></button></td></a>
         </tr>
 
         ';
