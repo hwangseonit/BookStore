@@ -65,7 +65,6 @@
                                 <a href="#" class="dropdown-toggle nav-item nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
                                     Quản Lý<span class="caret"></span>
                                 </a>
-
                                 <ul class="dropdown-menu" role="menu">
                                     <li class="ps-4 mb-2 text-start">
                                         <a href="manageProduct">Sản Phẩm</a>

@@ -3,7 +3,7 @@
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
-
+require __DIR__ . '/../config/config.php';
 require __DIR__ . '/../bootstrap.php';
 
 define('APPNAME', 'Bookworms Store');
@@ -69,3 +69,4 @@ $router->post('/updatePass', '\App\Controllers\Manage\ManagementController@updat
 
 $router->setBasePath('/bookstore/public');
 $router->run();
+

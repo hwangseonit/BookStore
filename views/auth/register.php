@@ -11,8 +11,8 @@
             <div class="panel panel-default">
                 <div class="pt-5">
                     <ul class="nav nav-tabs text-center">
-                        <li class="nav-link"><a href="/login">ĐĂNG NHẬP</a></li>
-                        <li class="nav-link active"><a href="/register">ĐĂNG KÝ</a></li>
+                        <li class="nav-link"><a href="<?= BASE_URL ?>/login">ĐĂNG NHẬP</a></li>
+                        <li class="nav-link active"><a href="<?= BASE_URL ?>/register">ĐĂNG KÝ</a></li>
                     </ul>
                 </div>
                 <div class="panel-body bg-light p-5">

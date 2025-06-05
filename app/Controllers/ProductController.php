@@ -82,10 +82,30 @@ class ProductController extends Controller
 		}
 	}
 
-
 	public function detailProduct()
 	{
-		$sach = NhaXuatBan::join('sach', 'sach.ma_nxb', '=', 'nhaxuatban.ma_nxb')->join('tacgia', 'tacgia.ma_tac_gia', '=', 'sach.ma_tac_gia')->get();
-		$this->sendPage('products/detail', ['product' => $sach->where('ma_sach', $_GET['masp'])->first()]);
-	}
+    // Kiểm tra tham số 'masp' có tồn tại và không rỗng
+    if (!isset($_GET['masp']) || empty($_GET['masp'])) {
+        echo "Không tìm thấy sản phẩm!";
+        return;
+    }
+
+    $maSanPham = $_GET['masp'];
+
+    // Truy vấn sản phẩm kết hợp với thông tin tác giả và nhà xuất bản
+    $product = NhaXuatBan::join('sach', 'sach.ma_nxb', '=', 'nhaxuatban.ma_nxb')
+        ->join('tacgia', 'tacgia.ma_tac_gia', '=', 'sach.ma_tac_gia')
+        ->where('sach.ma_sach', $maSanPham)
+        ->select('sach.*', 'nhaxuatban.ten_nxb', 'tacgia.ten_tac_gia') // Chỉ lấy các cột cần thiết
+        ->first();
+
+    // Nếu không tìm thấy sản phẩm, trả về thông báo lỗi
+    if (!$product) {
+        echo "Sản phẩm không tồn tại!";
+        return;
+    }
+
+    // Gửi dữ liệu sản phẩm đến view để hiển thị
+    $this->sendPage('products/detail', ['product' => $product]);
+}
 }

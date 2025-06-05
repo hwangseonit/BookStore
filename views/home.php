@@ -63,7 +63,7 @@
                                         if ($item->khuyen_mai > 0) {
                                             echo '<div class="badge">' . $item->khuyen_mai . '% </div>';
                                         };
-                                        echo '<div class="card card-span h-100 rounded-3"><a href="/detail?masp=' . $item->ma_sach . '"><img class="img-fluid rounded-3 h-100" src="img/product/' . $item->hinh_anh . '" alt="..." /></a>
+                                        echo '<div class="card card-span h-100 rounded-3"><a href="/bookstore/public/detail?masp=' . $item->ma_sach . '"><img class="img-fluid rounded-3 h-100" src="img/product/' . $item->hinh_anh . '" alt="..." /></a>
                                         <div class="card-body">
                                             <p class="text-1000 mb-1"> ' . $item->ten_sach . '</p>
                                             <div class=""><span class="text-warning me-2"><i class="fa fa-tag fa-lg"></i></span><span class="text-primary"><del> ' . number_format($item->gia_sach, 0, '.', ',') . 'đ</del></span></div>
@@ -176,7 +176,7 @@
                                         if ($item->khuyen_mai > 0) {
                                             echo '<div class="badge">' . $item->khuyen_mai . '% </div>';
                                         };
-                                        echo '<div class="card card-span h-100 rounded-3"><a href="/detail?masp=' . $item->ma_sach . '"><img class="img-fluid rounded-3 h-100" src="img/product/' . $item->hinh_anh . '" alt="..." /></a>
+                                        echo '<div class="card card-span h-100 rounded-3"><a href="/bookstore/public/detail?masp=' . $item->ma_sach . '"><img class="img-fluid rounded-3 h-100" src="img/product/' . $item->hinh_anh . '" alt="..." /></a>
                                         <div class="card-body">
                                             <p class="text-1000 mb-1"> ' . $item->ten_sach . '</p>
                                             <div class=""><span class="text-warning me-2"><i class="fa fa-tag fa-lg"></i></span><span class="text-primary"><del> ' . number_format($item->gia_sach, 0, '.', ',') . 'đ</del></span></div>

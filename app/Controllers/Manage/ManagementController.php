@@ -411,64 +411,14 @@ class ManagementController extends Controller
         redirect('../../manageBill');
     }
 
-  /*  public function send($billId)
+    public function send($billId)
     {
         $data['trang_thai'] = "sending";
         $bill = Bill::where('ma_hoa_don', '=', $billId)->first();
         $bill->update($data);
         redirect('../../manageBill');
     }
-*/
 
-    /*** SEND BILL ***/
-public function send($billId)
-{
-    // Lấy chi tiết hóa đơn
-    $billDetails = BillDetail::where('ma_hoa_don', $billId)->get();
-    $error = '';
-
-    // Tính tổng số lượng từng sách trong hóa đơn (phòng trường hợp 1 mã sách xuất hiện nhiều lần)
-    $soLuongSach = [];
-    foreach ($billDetails as $detail) {
-        if (!isset($soLuongSach[$detail->ma_sach])) {
-            $soLuongSach[$detail->ma_sach] = 0;
-        }
-        $soLuongSach[$detail->ma_sach] += $detail->so_luong;
-    }
-
-    // Kiểm tra tồn kho thực tế cho từng sách
-    foreach ($soLuongSach as $ma_sach => $tong_so_luong) {
-        $product = Product::where('ma_sach', $ma_sach)->first();
-        if (!$product) {
-            $error = 'Sách với mã ' . $ma_sach . ' không tồn tại.';
-            break;
-        }
-        $ton_kho = $product->so_luong - $product->sold;
-        if ($ton_kho < $tong_so_luong) {
-            $error = 'Không đủ sách tồn kho cho sách: ' . $product->ten_sach;
-            break;
-        }
-    }
-
-    if ($error !== '') {
-        echo "<script>alert('$error'); window.location.href='../../manageBill';</script>";
-        exit;
-    }
-
-    // Nếu đủ tồn kho, cập nhật sold và trạng thái đơn hàng
-    foreach ($soLuongSach as $ma_sach => $tong_so_luong) {
-        $product = Product::where('ma_sach', $ma_sach)->first();
-        $product->sold += $tong_so_luong;
-        $product->save();
-    }
-
-    $bill = Bill::where('ma_hoa_don', $billId)->first();
-    if ($bill) {
-        $bill->update(['trang_thai' => 'sending']);
-    }
-
-    redirect('../../manageBill');
-}
     /*** BILL FILTER ***/
     public function sortBill()
     {

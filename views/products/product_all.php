@@ -60,10 +60,10 @@
                         if ($product->khuyen_mai > 0) echo '<div class="badge">' . $product->khuyen_mai. '% </div>';
                         echo
                         '<div class="card">
-                            <a href="/detail?masp=' . $product->ma_sach . '"><img class="card-img-top" src="img/product/';
+                            <a href="/bookstore/public/detail?masp=' . $product->ma_sach . '"><img class="card-img-top" src="img/product/';
                         echo $product->hinh_anh . '" ></a>';
                         echo '<div class="card-body">
-                                <h6 class="card-title"><a style="color:#111111" href="/detail?masp=' . $product->ma_sach . '">';   if (mb_strlen($product->ten_sach) > 31) { echo mb_substr($product->ten_sach, 0, 28) . " ...";} else echo $product->ten_sach;
+                                <h6 class="card-title"><a style="color:#111111" href="/bookstore/public/detail?masp=' . $product->ma_sach . '">';   if (mb_strlen($product->ten_sach) > 31) { echo mb_substr($product->ten_sach, 0, 28) . " ...";} else echo $product->ten_sach;
                         echo'</a></h6>
                                 <div class="row">
                                 <div class="col ps-2">

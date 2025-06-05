@@ -88,7 +88,7 @@ $gio = Cart::join('sach', 'sach.ma_sach', '=', 'giohang.ma_sach')
 			'trang_thai_thanh_toan' => 'Chưa thanh toán',
 			'id'=> $khach->id,
 			'sdt' => $_POST['phone'],
-			'name'=> $khach->name,
+			'ten_khach_hang'=> $khach->name,
 			'dia_chi'=>$_POST['address'],
 			'ma_khuyen_mai' => ''
 		]);
