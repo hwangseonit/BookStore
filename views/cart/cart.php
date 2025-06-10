@@ -122,9 +122,25 @@
             </div>
             </form>
             <div class="row mt-5 mb-3 justify-content-center">
-                <button class="btn btn-primary w-25 text-light" data-bs-toggle="modal" data-bs-target="#confirm-pay">ĐẶT HÀNG</button>
+                <!-- <button class="btn btn-primary w-25 text-light" data-bs-toggle="modal" data-bs-target="#confirm-pay">ĐẶT HÀNG</button> -->
+                 <button id="orderBtn" class="btn btn-primary w-25 text-light">ĐẶT HÀNG</button>
             </div>
         </div>
 </main>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var orderBtn = document.getElementById('orderBtn');
+    var sumProduct = <?= (int)$sumProduct ?>;
 
+    orderBtn.addEventListener('click', function(e) {
+        if (sumProduct === 0) {
+            alert('Giỏ hàng của bạn đang trống, không thể đặt hàng!');
+            return;
+        }
+        // Nếu có sản phẩm, mở modal bằng JS
+        var modal = new bootstrap.Modal(document.getElementById('confirm-pay'));
+        modal.show();
+    });
+});
+</script>
 <?php $this->stop() ?>

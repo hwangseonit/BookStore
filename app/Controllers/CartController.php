@@ -69,6 +69,17 @@ class CartController extends Controller
 
 	public function pay()
 	{
+  $khach = Guard::user();
+    $cartItems = Cart::where('id', $khach->id)->get();
+
+    // Kiểm tra nếu giỏ hàng trống thì không cho đặt hàng
+    if ($cartItems->isEmpty()) {
+        // Có thể chuyển hướng về trang giỏ hàng kèm thông báo lỗi
+        $_SESSION['error'] = 'Giỏ hàng của bạn đang trống, không thể đặt hàng!';
+        redirect('cart');
+        return;
+    }
+		//
 		$khach = User::where('email', Guard::user()->email)->first();
 $gio = Cart::join('sach', 'sach.ma_sach', '=', 'giohang.ma_sach')
     ->where('giohang.id', $khach->id)
